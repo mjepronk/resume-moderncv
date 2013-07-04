@@ -8,8 +8,19 @@
 %\nopagenumbers{}
 
 \usepackage[utf8]{inputenc}
-\usepackage[dutch]{babel}
+\usepackage[dutch,english]{babel}
 \usepackage[scale=0.75]{geometry}
+\usepackage{xstring}
+
+% language switching stuff
+\newcommand{\cvlangflag}{en} % en or nl
+\input{flags}
+
+\IfEq{\cvlangflag}{en}{\selectlanguage{english}}{}
+\IfEq{\cvlangflag}{nl}{\selectlanguage{dutch}}{}
+
+\newcommand{\cvpresent}{
+  \IfEq{\cvlangflag}{en}{present}{huidig}}
 
 % personal data
 \name{Matthias}{Pronk}
@@ -21,8 +32,8 @@
 \homepage{www.masida.nl}
 %\social[linkedin]{nl.linkedin.com/in/matthiaspronk/}
 %\social[github]{masida}
-\extrainfo{8 december 1983}
 %\quote{Some quote}
+\photo[64pt][0.4pt]{matthias-pronk.jpg}
 
 %---------
 % content 
@@ -33,17 +44,23 @@
 
 \section{Experience}
 
-\cventry{2005--present}{Freelance IT
-  consultant}{Masida}{Amsterdam}{}{IT solutions with a focus on Free
-  Software/Open Source. Development of solutions mostly based on
-  Python, Oracle and GNU/Linux. Webdevelopment in Flask, Django and
-  PHP.}
+\cventry{2005--\cvpresent}{Freelance IT consultant}{Masida}{Amsterdam}{}{
+  \IfEq{\cvlangflag}{nl}
+    {Aanbieden van IT oplossingen veelal gebaseerd op vrije/open
+      source software. Webdevelopment met Flask, Django en PHP.}
+    {Delivering IT solutions with a focus on Free Software/Open
+      Source. Webdevelopment in Flask, Django and PHP.}}
 
-\cventry{2002--present}{Developer, System Administrator}{United Brains
-  for Management}{Soest}{}{Development of a web application to perform
-  online questionnaires. The software, written in Django and backed
-  with a PostgreSQL database, also includes a dashboard for
-  administration and reporting.}
+\cventry{2002--\cvpresent}{Developer, System Administrator}{United Brains for Management}{Soest}{}{
+  \IfEq{\cvlangflag}{nl}
+    {Ontwikkelen van een webapplicatie om online psychologische testen
+      af te nemen. De software, die is gebouwd op Django en een
+      PostgreSQL database, beschikt ook over een dashboard voor beheer
+      en rapportages.}
+    {Development of a web application to perform online
+      questionnaires. The software, written in Django and backed with
+      a PostgreSQL database, also includes a dashboard for
+      administration and reporting.}}
 
 \cventry{2012--2013}{IT consultant}{Giralis Groep}{s'Hertogenbosch}{}{
   Implementation of a complete new IT landscape entailing the basic
@@ -96,16 +113,17 @@
   TMAP, Consultancy Skills, IAF, TOGAF}
 
 \section{Computer skills}
-\cvitem{Programming}{Python, PHP, Oracle PL/SQL, Java, Bash,
-  JavaScript, C/C++}
-\cvitem{Tools}{Emacs, Git, Subversion, pgAdmin, PyUnit, Nose, selenium, gcc}
+\cvitem{Programming}{Python, Java, Haskell, JavaScript, PHP, Bash,
+  Oracle PL/SQL, C/C++}
+%\cvitim{XML}{XML, XPath, XSLT, DTD, Expat, Python ElementTree, Oracle XML functions}
+\cvitem{Tools}{Emacs, Git, Subversion, PyUnit, Nose, selenium, gcc}
 \cvitem{Web}{HTML, CSS, Flask Django, Ruby on Rails}
 \cvitem{Databases}{SQL (generic), Oracle, PostgreSQL, MySQL/MariaDB}
 \cvitem{Networking}{Theory TCP/IP, Apache HTTP server, Postfix SMTP
   server, OpenSSH}
 \cvitem{Oracle}{Oracle E-Business Suite, Oracle Database 10g/11g,
   Designer, Forms, Oracle APEX}
-\cvitem{Reporting}{Oracle BI Publisher, Oracle Reports, LaTeX,
+\cvitem{Reporting}{LaTeX, Oracle BI Publisher, Oracle Reports,
   matplotlib, ReportLab Toolkit}
 \cvitem{Operating Systems}{Debian GNU/Linux, RHEL/CentOS, BSD, Mac OS
   X, Solaris, Windows 95-Vista}
