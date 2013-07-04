@@ -13,14 +13,18 @@
 \usepackage{xstring}
 
 % language switching stuff
-\newcommand{\cvlangflag}{en} % en or nl
+\newcommand\cvlangflag{en} % en or nl
 \input{flags}
 
-\IfEq{\cvlangflag}{en}{\selectlanguage{english}}{}
-\IfEq{\cvlangflag}{nl}{\selectlanguage{dutch}}{}
+\IfEq{\cvlangflag}{nl}
+     {\selectlanguage{dutch}}
+     {\selectlanguage{english}}
 
-\newcommand{\cvpresent}{
-  \IfEq{\cvlangflag}{en}{present}{huidig}}
+\newcommand\cvtranslate[2]{\IfEq{\cvlangflag}{nl}{#1}{#2}}
+\newcommand\cvpresent{\cvtranslate{huidig}{present}}
+\newcommand\cvdeveloper{\cvtranslate{Ontwikkelaar}{Developer}}
+\newcommand\cvwebdev{\cvtranslate{Webontwikkelaar}{Web Developer}}
+\newcommand\cvsysadmin{\cvtranslate{Systeembeheerder}{System Administrator}}
 
 % personal data
 \name{Matthias}{Pronk}
@@ -42,96 +46,156 @@
 
 \makecvtitle
 
-\section{Experience}
+\cvtranslate
+    {\section{Werkervaring}}
+    {\section{Experience}}
 
 \cventry{2005--\cvpresent}{Freelance IT consultant}{Masida}{Amsterdam}{}{
-  \IfEq{\cvlangflag}{nl}
-    {Aanbieden van IT oplossingen veelal gebaseerd op vrije/open
-      source software. Webdevelopment met Flask, Django en PHP.}
-    {Delivering IT solutions with a focus on Free Software/Open
-      Source. Webdevelopment in Flask, Django and PHP.}}
+  \cvtranslate
+      {Aanbieden van IT oplossingen veelal gebaseerd op vrije/open
+        source software. Webdevelopment met Flask, Django en PHP.}
+      {Delivering IT solutions with a focus on Free Software/Open
+        Source. Webdevelopment in Flask, Django and PHP.}}
 
-\cventry{2002--\cvpresent}{Developer, System Administrator}{United Brains for Management}{Soest}{}{
-  \IfEq{\cvlangflag}{nl}
-    {Ontwikkelen van een webapplicatie om online psychologische testen
-      af te nemen. De software, die is gebouwd op Django en een
-      PostgreSQL database, beschikt ook over een dashboard voor beheer
-      en rapportages.}
-    {Development of a web application to perform online
-      questionnaires. The software, written in Django and backed with
-      a PostgreSQL database, also includes a dashboard for
-      administration and reporting.}}
+\cventry{2002--\cvpresent}{\cvdeveloper, \cvsysadmin}{United Brains for Management}{Soest}{}{
+  \cvtranslate
+      {Ontwikkelen van een webapplicatie om online psychologische
+        testen af te nemen. De software, die is gebouwd op Django en
+        een PostgreSQL database, beschikt ook over een dashboard voor
+        beheer en rapportages.}
+      {Development of a web application to perform online
+        questionnaires. The software, written in Django and backed
+        with a PostgreSQL database, also includes a dashboard for
+        administration and reporting.}}
 
 \cventry{2012--2013}{IT consultant}{Giralis Groep}{s'Hertogenbosch}{}{
-  Implementation of a complete new IT landscape entailing the basic
-  software for Office automation and software to support the
-  healthcare business activities (EHR).}
+  \cvtranslate
+      {Implementatie van een compleet nieuw IT landschap waaronder de
+        basis werkplekautomatisering en software om de
+        zorgactiviteiten te ondersteunen (EPD).}
+      {Implementation of a complete new IT landscape entailing the
+        basic software for Office automation and software to support
+        the healthcare business activities (EHR).}}
 
-\cventry{2008--2012}{Technical Consultant}{Capgemini Technology
-  Services}{Utrecht}{}{Development of customizations for the Oracle
-  E-Business Suite (ERP) for various customers (KPN, AEGON) in
-  cooperation with an offshore team. Customizations include interfaces
-  (PL/SQL), reports, and various supporting tools in Python (for
-  example programs to perform file transfers over FTP and SSH.}
+\cventry{2008--2012}{Technical Consultant}{Capgemini Technology Services}{Utrecht}{}{
+  \cvtranslate
+      {Ontwikkeling van maatwerk voor Oracle E-Business Suite (ERP)
+        voor klanten (KPN, AEGON) in samenwerking met een offshore
+        team. Dit maatwerk omvatte interfaces (PL/SQL), rapportages en
+        verschillende ondersteunende progamma's in Python
+        (bijvoorbeeld ten behoeve van bestandsoverdracht over FTP en
+        SSH met derden.}
+      {Development of customizations for the Oracle E-Business Suite
+        (ERP) for various customers (KPN, AEGON) in cooperation with
+        an offshore team. Customizations include interfaces (PL/SQL),
+        reports and various supporting tools in Python (for example
+        programs to perform file transfers over FTP and SSH).}}
 
-\cventry{2005--2008}{Web Developer}{Memento}{Amsterdam}{}{Developed
-  several web applications in Django, PHP and ActionScript for
-  customers of Memento.}
+\cventry{2005--2008}{\cvwebdev}{Memento}{Amsterdam}{}{
+  \cvtranslate
+       {Ontwikkeling van Verschillende web applicaties voor klanten
+         van Memento in Django, PHP en ActionScript.}
+       {Developed several web applications in Django, PHP and
+         ActionScript for customers of Memento.}}
 
-\cventry{2005--2007}{Developer}{Coval}{Soest}{}{Development of a
-  custom ERP suite using Oracle technology for Syngenta. For another
-  client, Sparcs, I've developed a website with online booking form.}
+\cventry{2005--2007}{\cvdeveloper}{Coval}{Soest}{}{
+  \cvtranslate
+       {Ontwikkeling van een maatwerk ERP systeem met behulp van
+         Oracle technologie voor een kweker van jongle
+         planten. Daarnaast heb ik een website met een online
+         boekingssysteem gebouwd voor een reisbureau.}
+       {Development of a custom ERP suite using Oracle technology for
+         a young plant production company. Also, I've developed a
+         website with online booking system for a travel agency.}}
 
-\cventry{2004--2005}{Developer}{Universiteit van
-  Amsterdam}{Amsterdam}{}{For the “Information and Language Processing
-  Systems” group of the UvA I've created a set of parsers, written in
-  Python, to parse various types of documents (PDF, PS, HTML) and feed
-  them to a search engine.}
+\cventry{2004--2005}{\cvdeveloper}{Universiteit van Amsterdam}{Amsterdam}{}{
+  \cvtranslate
+      {Voor de “Information and Language Processing Systems” groep van
+        de UvA heb ik een verzameling scripts geschreven in Python om
+        data uit diverse documentformaten (PDF, PS, HTML) te
+        extraheren en deze te laten indexeren door een zoekmachine.}
+      {For the “Information and Language Processing Systems” group of
+        the UvA I've written a set of Python scripts to extract data
+        from various types of documents (PDF, PS, HTML) and to have
+        them indexed by a search engine.}}
 
-\cventry{2003--2008}{System Administrator, Developer}{Rubber Biscuit
-  Internet Services}{Amsterdam}{}{Administration of various web- and
-  mail servers (Linux, FreeBSD). I've also developed tools to
-  administrate the several servers and services in Python.}
+\cventry{2003--2008}{\cvsysadmin, \cvdeveloper}{Rubber Biscuit Internet Services}{Amsterdam}{}{
+  \cvtranslate
+      {Beheer van verschillende web- en mail servers (Linux,
+        FreeBSD). Tevens heb ik tools ontwikkeld in Python om het
+        dagelijkse beheer te vereenvoudigen en klanten de mogelijkheid
+        te bieden voor self-service.}
+      {Administration of various web- and mail servers (Linux,
+        FreeBSD). I've also developed tools in Python to ease daily
+        administration and enable customer self-service.}}
 
-\cventry{2001--2004}{Web Developer}{Bureau voor Onderzoek \&
-  Statistiek}{Soest}{}{Administration of IT infrastructure and
-  development of the website.}
+\cventry{2001--2004}{\cvwebdev, \cvsysadmin}{Bureau voor Onderzoek \& Statistiek}{Soest}{}{
+  \cvtranslate
+      {Beheer van de IT infrastructuur en ontwikkeling van de
+        website.}
+      {Administration of IT infrastructure and development of the
+        website.}}
 
-\cventry{1999--2005}{Developer, System Administrator}{Loxo Consultancy
-  Services}{Soest}{}{For one of the customers of Loxo, Amsterdam
-  Airport Schiphol, I've created a set of C++ programs to parse the
-  huge amount of log files from the luggage handling systems. This
-  resulted in better insight in the frequency and duration of outages
-  of various components in the luggage handling system.}
+\cventry{1999--2005}{\cvdeveloper, \cvsysadmin}{Loxo Consultancy Services}{Soest}{}{
+  \cvtranslate
+      {Voor één van Loxo's klanten, Amsterdam Airport Schiphol, heb ik
+        een aantal C++ programma's geschreven die een grote
+        hoeveelheid log bestanden van het bagageafhandelingssystem kon
+        analyseren. Dit leverde een beter inzicht in de frequentie en
+        duur van storingen in de verschillende subsystemen van het
+        bagagesysteem.}
+      {For one of the customers of Loxo, Amsterdam Airport Schiphol,
+        I've created a set of C++ programs to parse the huge amount of
+        log files from the luggage handling systems. This resulted in
+        better insight in the frequency and duration of outages of
+        various components in the luggage handling system.}}
 
-\section{Education}
-\cventry{2004--2005}{Informatics Science}{Universiteit van Amsterdam}{Amsterdam}{}{}
-\cventry{2001--2004}{Business Informatics}{Hogeschool van Utrecht}{Utrecht}{}{}
+\cvtranslate
+    {\section{Opleidingen}}
+    {\section{Education}}
 
-\section{Courses}
-\cventry{2008--2010}{Capgemini Academy}{}{Utrecht}{}{Testing with
-  TMAP, Consultancy Skills, IAF, TOGAF}
+\cventry{2004--2005}
+        {\cvtranslate
+          {Informatiekunde}
+          {Informatics Science}}
+        {Universiteit van Amsterdam}{Amsterdam}{}{}
+\cventry{2001--2004}
+        {\cvtranslate
+          {Bedrijfskundige Informatica}
+          {Business Informatics}}
+        {Hogeschool van Utrecht}{Utrecht}{}{}
 
-\section{Computer skills}
-\cvitem{Programming}{Python, Java, Haskell, JavaScript, PHP, Bash,
-  Oracle PL/SQL, C/C++}
-%\cvitim{XML}{XML, XPath, XSLT, DTD, Expat, Python ElementTree, Oracle XML functions}
+\cvtranslate
+    {\section{Cursussen}}
+    {\section{Courses}}
+
+\cventry{2008--2010}{Capgemini Academy}{}{Utrecht}{}
+        {Testing with TMAP, Consultancy Skills, IAF, TOGAF}
+
+\cvtranslate
+    {\section{Computer vaardigheden}}
+    {\section{Computer skills}}
+
+\cvitem{Programming}{Python, Java, Haskell, JavaScript, PHP, Bash, Oracle PL/SQL, C/C++}
+\cvitem{XML}{XML, XPath, XSLT, DTD, Expat, Python ElementTree, Oracle XML functions}
 \cvitem{Tools}{Emacs, Git, Subversion, PyUnit, Nose, selenium, gcc}
 \cvitem{Web}{HTML, CSS, Flask Django, Ruby on Rails}
 \cvitem{Databases}{SQL (generic), Oracle, PostgreSQL, MySQL/MariaDB}
-\cvitem{Networking}{Theory TCP/IP, Apache HTTP server, Postfix SMTP
-  server, OpenSSH}
-\cvitem{Oracle}{Oracle E-Business Suite, Oracle Database 10g/11g,
-  Designer, Forms, Oracle APEX}
-\cvitem{Reporting}{LaTeX, Oracle BI Publisher, Oracle Reports,
-  matplotlib, ReportLab Toolkit}
-\cvitem{Operating Systems}{Debian GNU/Linux, RHEL/CentOS, BSD, Mac OS
-  X, Solaris, Windows 95-Vista}
+\cvitem{Networking}{Theory TCP/IP, Apache HTTP server, Postfix SMTP server, OpenSSH}
+\cvitem{Oracle}{Oracle E-Business Suite, Oracle Database 10g/11g, Designer, Forms, Oracle APEX}
+\cvitem{Reporting}{\LaTeX{}, Oracle BI Publisher, Oracle Reports, matplotlib, ReportLab Toolkit}
+\cvitem{Operating Systems}{Debian GNU/Linux, RHEL/CentOS, BSD, Mac OS X, Solaris, Windows 95-Vista}
 
-\section{Languages}
-\cvitem{Dutch}{Native proficiency}
-\cvitem{English}{Full professional proficiency}
-\cvitem{French}{Limited working proficiency}
+\cvtranslate
+    {\section{Talen}}
+    {\section{Languages}}
 
+\cvtranslate
+    {\cvitem{Nederlands}{Moedertaal}
+      \cvitem{Engels}{Goede taalvaardigheid}
+      \cvitem{Frans}{Beperkte taalvaardigheid}}
+    {\cvitem{Dutch}{Native proficiency}
+      \cvitem{English}{Full professional proficiency}
+      \cvitem{French}{Limited working proficiency}}
 
 \end{document}
